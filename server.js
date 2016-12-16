@@ -76,6 +76,26 @@ app.get('/api', function api_index(req, res) {
    })
  });
 
+//GET ALL TRAVELS
+ app.get('/api/travels', function (req, res) {
+   // send all books as JSON response
+   db.Travel.find(function(err, travels){
+     if (err) { return console.log("index error: " + err); }
+     res.json(travels);
+   });
+ });
+
+// GET ONE TRAVEL
+ app.get('/api/travels/:id', function (req, res) {
+   db.Travel.findOne({_id: req.params.id }, function(err, travelData) {
+     res.json(travelData);
+   });
+ });
+
+
+
+
+
 /**********
  * SERVER *
  **********/
