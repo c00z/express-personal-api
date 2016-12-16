@@ -1,10 +1,7 @@
 var mongoose = require('mongoose'),
   Schema = mongoose.Schema;
 
-Travels = require('./travels')
-
-var TravelsSchema = new Schema({
-  _id: String,
+var TravelSchema = new Schema({
   description: String,
   city: String,
   country: String,
@@ -12,8 +9,8 @@ var TravelsSchema = new Schema({
   image: String
 });
 
-var Travels = mongoose.model('Travels', TravelsSchema);
+var Travel = mongoose.model('Travel', TravelSchema);
 
-module.exports = Travels;
+module.exports = Travel;
 
 /////////////

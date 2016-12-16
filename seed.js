@@ -5,7 +5,6 @@ var db = require('./models');
 
 var travel_list = [
   {
-  _id: 1,
   country: "Iceland",
   city: "Reykjavik",
   description: "Chasing the northern lights for seven days",
@@ -13,7 +12,6 @@ var travel_list = [
   image: "http://i.imgur.com/MV9Hdvc.jpg"
   },
   {
-    _id: 2,
     country: "Norway",
     city: "Bergen",
     description: "Hunting for trolls",
@@ -21,7 +19,6 @@ var travel_list = [
     image: "http://i.imgur.com/2cNpk9i.jpg"
   },
   {
-    _id: 3,
     country: "Indonesia",
     city: "Bali",
     description: "Beach by day, scooter by night",
@@ -31,12 +28,17 @@ var travel_list = [
 ]
 
 
+db.Travel.remove({}, function(err, travels){
+  if(err) {
+    console.log('Error occurred in remove', err);
+  } else {
+    console.log('removed all travels');
 
-db.Travels.create(new_travel, function(err, travels){
-  if (err){
-    return console.log("Error:", err);
+    // create new records based on the array books_list
+    db.Travel.create(travel_list, function(err, travels){
+      if (err) { return console.log('BROKEN!!', err); }
+      console.log("created", travels.length, "travels");
+      process.exit();
+    });
   }
-
-  console.log("Created new travel site", travels._id)
-  process.exit(); // we're all done! Exit the program.
-})
+});
