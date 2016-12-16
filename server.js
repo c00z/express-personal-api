@@ -92,7 +92,14 @@ app.get('/api', function api_index(req, res) {
    });
  });
 
-
+//CREATE A NEW TRAVEL
+ app.post('/api/travels', function (req, res) {
+   console.log('travels create', req.body);
+   var newTravel = new db.Travel(req.body);
+   newTravel.save(function handleDBTravelSaved(err, savedTravel) {
+     res.json(savedTravel);
+   });
+ });
 
 
 

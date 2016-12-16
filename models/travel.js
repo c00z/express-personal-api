@@ -2,9 +2,9 @@ var mongoose = require('mongoose'),
   Schema = mongoose.Schema;
 
 var TravelSchema = new Schema({
-  description: String,
-  city: String,
   country: String,
+  city: String,
+  description: String,
   year: String,
   image: String
 });
