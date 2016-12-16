@@ -94,7 +94,7 @@ app.get('/api', function api_index(req, res) {
    });
  });
 
-//CREATE A NEW TRAVEL 
+//CREATE A NEW TRAVEL
  app.post('/api/travels', function (req, res) {
      var travelInfo = {
      country: req.body.country,
@@ -120,18 +120,19 @@ app.get('/api', function api_index(req, res) {
        res.status(500).send('error: ', err);
      }
       else {
-        foundTravel.country = req.body.country,
-        foundTravel.city = req.body.city,
-        foundTravel.description = req.body.description,
-        foundTravel.year = req.body.year,
-        foundTravel.image = req.body.image,
+        foundTravel.country = req.body.country || foundTravel.country;
+        foundTravel.city = req.body.city || foundTravel.cit;
+        foundTravel.description = req.body.description || foundTravel.description;
+        foundTravel.year = req.body.year || foundTravel.year;
+        foundTravel.image = req.body.image || foundTravel.image;
+
         foundTravel.save(function (err, savedTravel) {
-
-
+          if (err) {
+            response.status(500).send('database error');
+          } else {
+            res.json(foundTravel);
+          }
         })
-
-
-        res.json(foundTravel);
       }
    });
  });
