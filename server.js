@@ -50,12 +50,12 @@ app.get('/api', function api_index(req, res) {
     documentationUrl: "https://github.com/c00z/express-personal-api/blob/master/README.md",
     baseUrl: "https://c00z.herokuapp.com/",
     endpoints: [
-      {method: "GET", path: "/api", description: "Describes all available endpoints"},
-      {method: "GET", path: "/api/profile", description: "Data about me"},
-      {method: "GET", path: "/api/travels", description: "Places I've been"},
-      {method: "GET", path: "/api/travels/:id", description: "More info"},
-      {method: "POST", path: "/api/travels", description: "Wunderlust List"},
-      {method: "DELETE", path: "/api/travels/:id", description: "Remove from List"}
+      {method: "GET", path: "/api", description: "All available endpoints"},
+      {method: "GET", path: "/api/profile", description: "My life, online"},
+      {method: "GET", path: "/api/travels", description: "Where I've been"},
+      {method: "GET", path: "/api/travels/:id", description: "Location Information"},
+      {method: "POST", path: "/api/travels", description: "Add to the Wunderlist"},
+      {method: "DELETE", path: "/api/travels/:id", description: "Remove from Wunderlist"}
     ]
   })
 });
@@ -101,6 +101,20 @@ app.get('/api', function api_index(req, res) {
    });
  });
 
+ // DELETE TRAVEL
+ app.delete('/api/travels/:id', function (req, res) {
+   // get travel id from url params (`req.params`)
+   console.log('travels delete', req.params);
+   var travelId = req.params.id;
+   // find the index of the travel we want to remove
+   var deleteTravelIndex = travels.findIndex(function(element, index) {
+     return (element._id === parseInt(req.params.id)); //params are strings
+   });
+   console.log('deleting travels with index', deleteTravelIndex);
+   var travelToDelete = travels[deleteTravelIndex];
+   travels.splice(deleteTravelIndex, 1);
+   res.json(travelToDelete);
+ });
 
 
 /**********
