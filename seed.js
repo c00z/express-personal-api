@@ -27,14 +27,14 @@ var travel_list = [
   }
 ]
 
-
+//
 db.Travel.remove({}, function(err, travels){
   if(err) {
     console.log('Error occurred in remove', err);
   } else {
     console.log('removed all travels');
 
-    // create new records based on the array books_list
+    // create new records based on the array travel_list
     db.Travel.create(travel_list, function(err, travels){
       if (err) { return console.log('BROKEN!!', err); }
       console.log("created", travels.length, "travels");

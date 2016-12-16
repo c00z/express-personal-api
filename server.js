@@ -4,6 +4,7 @@ var express = require('express'),
 
 // parse incoming urlencoded form data
 // and populate the req.body object
+//gets info from body where we usually get form data
 var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -55,6 +56,7 @@ app.get('/api', function api_index(req, res) {
       {method: "GET", path: "/api/travels", description: "Where I've been"},
       {method: "GET", path: "/api/travels/:id", description: "Location Information"},
       {method: "POST", path: "/api/travels", description: "Add to the Wunderlist"},
+      {method: "PATCH", path: "/api/travels/:id", description: "Update Travel location"},
       {method: "DELETE", path: "/api/travels/:id", description: "Remove from Wunderlist"}
     ]
   })
@@ -78,7 +80,7 @@ app.get('/api', function api_index(req, res) {
 
 //GET ALL TRAVELS
  app.get('/api/travels', function (req, res) {
-   // send all books as JSON response
+   // send all travels as JSON response
    db.Travel.find(function(err, travels){
      if (err) { return console.log("index error: " + err); }
      res.json(travels);
@@ -92,14 +94,48 @@ app.get('/api', function api_index(req, res) {
    });
  });
 
-//CREATE A NEW TRAVEL
+//CREATE A NEW TRAVEL 
  app.post('/api/travels', function (req, res) {
-   console.log('travels create', req.body);
-   var newTravel = new db.Travel(req.body);
-   newTravel.save(function handleDBTravelSaved(err, savedTravel) {
-     res.json(savedTravel);
+     var travelInfo = {
+     country: req.body.country,
+     city:req.body.city
+   };
+   var newTravel = new db.Travel(travelInfo);
+   newTravel.save(function(err, travel){
+    if (err) {
+      response.status(500).send('database error');
+      return console.log('error', err);
+    } else {
+      res.json(travel);
+    }
+  });
+});
+
+
+
+ //update a travel listing
+ app.patch('/api/travels/:id', function (req, res) {
+   db.Travel.findOne({_id: req.params.id }, function(err, foundTravel) {
+     if (err) {
+       res.status(500).send('error: ', err);
+     }
+      else {
+        foundTravel.country = req.body.country,
+        foundTravel.city = req.body.city,
+        foundTravel.description = req.body.description,
+        foundTravel.year = req.body.year,
+        foundTravel.image = req.body.image,
+        foundTravel.save(function (err, savedTravel) {
+
+
+        })
+
+
+        res.json(foundTravel);
+      }
    });
  });
+
 
  // DELETE TRAVEL
  app.delete('/api/travels/:id', function (req, res) {
