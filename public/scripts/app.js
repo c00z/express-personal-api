@@ -11,36 +11,28 @@ $travelsList = $('#travelTarget');
 var source = $('#travels-template').html();
 template = Handlebars.compile(source);
 
-///in html <script id="travels-template" type="text/x-handlebars-template">
-
-var source = $('#travels-template').html();
-  template = Handlebars.compile(source);
-
+//load api on page load.
 $.ajax({
   method: 'GET',
-  url: '/api',
+  url: '/api/travels',
   success: handleSuccess,
   error: handleError
 
 });
 
 
-// for each travel
+//create handle bar key value pair
+function handleSuccess(allTravels) {
   allTravels.forEach(function(travelData){
-    // create HTML for individual travel. travel data creates empty call for html (travel.country)
     travelHtml = template({travel: travelData});
-    // add travel to page
     $travelsList.append(travelHtml);
-  });
+
+  })
 };
-
-
-function handleSuccess(json) {
-  allTravels = json;
-  render();
-}
 
 function handleError(e) {
   console.log('uh oh');
   $('#travelTarget').text('Failed to load travels, is the server working?');
 }
+
+});

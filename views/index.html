@@ -29,28 +29,26 @@
     </div>
 
     <!-- HERO -->
+
     <div class='container'>
           <div class="row">
             <h1 id="hero">travel destinations</h1>
+            <script id="travels-template" type="text/x-handlebars-template">
               <article class="content-card col-md-6">
-
+                <!-- text -->
+                  <p>{{travel.country}}</p>
+                  <p>{{travel.city}}</p>
+                  <p>{{travel.description}}</p>
               </article>
               <section class="content-card col-md-6">
-
+                <!-- img -->
+                <img src="{{travel.image}}">
               </section>
           </div>
       </div>
-    <!-- handlebars template -->
-    <div>
-    <script id="travels-template" type="text/x-handlebars-template">
-      <hr>
-      <p>
-        <b>{{travel.country}}</b>
-        by {{travel.city}}
-        <button type="button" name="button" class="deleteBtn btn btn-danger pull-right" data-id={{travels._id}}>Delete</button>
-      </p>
+
     </script>
-  </div>
+
 
   <!-- form submit -->
 
