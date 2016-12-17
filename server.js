@@ -101,7 +101,10 @@ app.get('/api', function api_index(req, res) {
  app.post('/api/travels', function (req, res) {
      var travelInfo = {
      country: req.body.country,
-     city:req.body.city
+     city:req.body.city,
+     descripton: req.body.description,
+     year: req.body.year,
+     image: req.body.image
    };
    var newTravel = new db.Travel(travelInfo);
    newTravel.save(function(err, travel){

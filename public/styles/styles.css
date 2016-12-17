@@ -29,6 +29,13 @@ section {
   object-fit: contain;
 }
 
+.form-group {
+  display: inline;
+  width: 140px;
+  padding: 10px;
+}
+
+
 .content-card {
   padding: 20px;
   min-height: 400px;
@@ -43,4 +50,20 @@ section {
   text-shadow: 3px 4px 5px #000;
   border-radius: 6px;
   padding: 5px;
+}
+
+/*Sizing country, city and description*/
+
+#country {
+  font-size: 30px;
+  font-weight: bolder;
+
+}
+
+#city {
+  font-size: 25px;
+}
+
+#description {
+  font-size: 23px;
 }
