@@ -17,8 +17,10 @@
     <!-- APPLICATION SCRIPTS -->
     <script src="/scripts/app.js"></script>
   </head>
-  <body>
 
+
+
+  <body>
    <!-- NAV -->
     <nav class="navbar navbar-default navbar-static-top">
       <div class="container">
@@ -33,26 +35,25 @@
    </nav>
 
     <!-- HERO -->
-
     <div class='container'>
           <div class="row">
             <h1 id="hero">travel destinations</h1>
+            <!-- HANDLEBARS SCRIPT -->
             <script id="travels-template" type="text/x-handlebars-template">
-              <article class="content-card col-md-6">
-                <!-- text -->
-                  <p id="country">{{travel.country}}</p> <hr>
-                  <p id="city">{{travel.city}}</p> <hr>
-                  <p id="description">{{travel.description}}</p> <hr>
-                  <p id="year">{{travel.year}}</p>
-              </article>
-              <section class="content-card col-md-6">
-                <!-- img -->
-                <img src="{{travel.image}}">
-              </section>
+                <article class="content-card col-md-6">
+                  <!-- imported text -->
+                    <p id="country">{{travel.country}}</p> <hr>
+                    <p id="city">{{travel.city}}</p> <hr>
+                    <p id="description">{{travel.description}}</p> <hr>
+                    <p id="year">{{travel.year}}</p>
+                </article>
+                <section class="content-card col-md-6">
+                  <!-- imported img -->
+                  <img src="{{travel.image}}">
+                </section>
+            </script>
           </div>
       </div>
-
-    </script>
 
 
   <!-- form submit -->
@@ -82,7 +83,7 @@
         <div class="form-group">
           <label for="upload-photo">Submit pic!</label>
           <input type="file" class="form-control" name="image" placeholder="Submit pic!" id="upload-photo">
-        </div> 
+        </div>
 
 
           <!-- button -->
