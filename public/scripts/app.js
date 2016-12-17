@@ -20,10 +20,9 @@ $.ajax({
 
 });
 
-
+//Add a new destination on page and db
 $('#newTravelForm').on('submit', function(event) {
   event.preventDefault();
-  // console.log('new book serialized', $(this).serializeArray());
   $.ajax({
     method: 'POST',
     url: '/api/travels',
@@ -32,8 +31,6 @@ $('#newTravelForm').on('submit', function(event) {
     error: newTravelError
   });
 });
-
-
 
 
 

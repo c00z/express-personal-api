@@ -30,8 +30,8 @@ Please fork & clone this repo to get started.
 
 ### Restful routes for travels
 
-* GET /api/travels  displays a list of all travels
-* GET /api/travels/:id  display a specific travel
+* GET /api/travels  Displays a list of all travels
+* GET /api/travels/:id  Display a specific travel
 * POST /api/travels  Add to the travel list
 * PATCH /api/travels/:id  Update a travel location
 * DELETE /api/travels/:id  Remove a location
