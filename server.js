@@ -55,9 +55,9 @@ app.get('/api', function api_index(req, res) {
       {method: "GET", path: "/api/profile", description: "My life, online"},
       {method: "GET", path: "/api/travels", description: "Where I've been"},
       {method: "GET", path: "/api/travels/:id", description: "Location Information"},
-      {method: "POST", path: "/api/travels", description: "Add to the Wunderlist"},
+      {method: "POST", path: "/api/travels", description: "Add to my Wunderlust list"},
       {method: "PATCH", path: "/api/travels/:id", description: "Update Travel location"},
-      {method: "DELETE", path: "/api/travels/:id", description: "Remove from Wunderlist"}
+      {method: "DELETE", path: "/api/travels/:id", description: "Remove from my Wunderlust list"}
     ]
   })
 });
@@ -78,9 +78,12 @@ app.get('/api', function api_index(req, res) {
    })
  });
 
+ /**************
+  * API ROUTES *
+  **************/
+
 //GET ALL TRAVELS
  app.get('/api/travels', function (req, res) {
-   // send all travels as JSON response
    db.Travel.find(function(err, travels){
      if (err) { return console.log("index error: " + err); }
      res.json(travels);
@@ -112,8 +115,7 @@ app.get('/api', function api_index(req, res) {
 });
 
 
-
- //update a travel listing
+ //UPDATE TRAVEL LISTING
  app.patch('/api/travels/:id', function (req, res) {
    db.Travel.findOne({_id: req.params.id }, function(err, foundTravel) {
      if (err) {
@@ -140,10 +142,8 @@ app.get('/api', function api_index(req, res) {
 
  // DELETE TRAVEL
  app.delete('/api/travels/:id', function (req, res) {
-   // get travel id from url params (`req.params`)
    console.log('travels delete', req.params);
    var travelId = req.params.id;
-   // find the index of the travel we want to remove
    var deleteTravelIndex = travels.findIndex(function(element, index) {
      return (element._id === parseInt(req.params.id)); //params are strings
    });
