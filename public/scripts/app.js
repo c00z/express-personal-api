@@ -21,6 +21,22 @@ $.ajax({
 });
 
 
+$('#newTravelForm').on('submit', function(event) {
+  event.preventDefault();
+  // console.log('new book serialized', $(this).serializeArray());
+  $.ajax({
+    method: 'POST',
+    url: '/api/travels',
+    data: $(this).serialize(),
+    success: newTravelSuccess,
+    error: newTravelError
+  });
+});
+
+
+
+
+
 //create handle bar key value pair
 function handleSuccess(allTravels) {
   allTravels.forEach(function(travelData){
@@ -34,5 +50,17 @@ function handleError(e) {
   console.log('uh oh');
   $('#travelTarget').text('Failed to load travels, is the server working?');
 }
+
+function newTravelSuccess(json) {
+  $('#newTravelForm input').val('');
+  allTravels.push(json);
+  console.log(allTravels);
+  allTravels.append(json);
+}
+
+function newTravelError() {
+  console.log('newtravel error!');
+}
+
 
 });
