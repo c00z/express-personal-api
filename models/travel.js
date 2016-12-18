@@ -21,6 +21,3 @@ var TravelSchema = new Schema({
 var Travel = mongoose.model('Travel', TravelSchema);
 
 module.exports = Travel;
-
-/////////////
-//view mongoose schema types. mongoosejs.com/docs
