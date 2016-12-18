@@ -34,15 +34,11 @@ h4 {
 }
 
 h4:hover {
-  color: grey;
+  color: black;
   font-weight: bold;
-  text-shadow: 3px 4px 1px black;
+  /*text-shadow: 3px 4px 1px black;*/
 }
 
-
-/*nav {
-  opacity: .8;
-}*/
 
 .form-group {
   display: inline;
