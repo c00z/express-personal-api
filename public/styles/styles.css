@@ -6,7 +6,7 @@ body {
   color: #333;
   font-family: Helvetica, Arial, sans-serif;
   background-color: #c8c8c8;
-  background-image:url(http://i.imgur.com/3QO1stt.jpg);
+  background-image:url(http://i.imgur.com/DZlwiEk.jpg);
   background-size: cover;
   repeat: none;
   max-width:100%;
@@ -40,9 +40,9 @@ h4:hover {
 }
 
 
-nav {
-  opacity: .7;
-}
+/*nav {
+  opacity: .8;
+}*/
 
 .form-group {
   display: inline;

@@ -32,6 +32,7 @@ $('#newTravelForm').on('submit', function(event) {
   });
 });
 
+var formData = JSON.stringify($("#newTravelForm").serializeArray());
 
 
 //create handle bar key value pair
