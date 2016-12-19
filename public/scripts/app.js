@@ -11,6 +11,8 @@ $travelsList = $('#travelTarget');
 var source = $('#travels-template').html();
 template = Handlebars.compile(source);
 
+
+
 //load api on page load.
 $.ajax({
   method: 'GET',
