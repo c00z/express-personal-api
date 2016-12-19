@@ -1,8 +1,6 @@
-// This file allows us to seed our application with data
-// simply run: `node seed.js` from the root of this project folder.
-
 var db = require('./models');
 
+//Travel list seed data
 var travel_list = [
   {
   country: "Iceland",
@@ -14,7 +12,7 @@ var travel_list = [
   {
     country: "Norway",
     city: "Bergen",
-    description: "Hunting for trolls",
+    description: "Hunting for trolls in the far north",
     year: "2016",
     image: "http://i.imgur.com/2cNpk9i.jpg"
   },

@@ -17,7 +17,7 @@ h1 {
   text-align: center;
 }
 
-/*Stlying importing API images*/
+/*Stlying imported API images*/
 img {
   height: 150%;
   width: 120%;
@@ -37,6 +37,7 @@ h4:hover {
   font-weight: bold;
 }
 
+/* styling line items */
 hr {
     border: 0;
     height: 2px;
@@ -53,7 +54,6 @@ hr {
   width: 140px;
   padding: 10px;
 }
-
 
 .content-card {
   padding: 20px;
