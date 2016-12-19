@@ -46,6 +46,8 @@ hr {
 
 .navbar {
   position: fixed;
+  width: 100%;
+  text-align: center;
 }
 .form-group {
   display: inline;
